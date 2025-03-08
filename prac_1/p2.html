@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    .img{
+        width: 300px;
+        height: 300px;
+    }
+</style>
+
+</head>
+<body>
+   <div class="img"></div>
+</body>
+<script>
+
+    const p = new Promise( (resolve, reject)=>{
+        setTimeout(() => {
+            resolve("promise resolve successfully");
+        }, 3000);
+    });
+
+    const p3 = new Promise( (resolve, reject)=>{
+        setTimeout(() => {
+            resolve("promise resolve successfully");
+        }, 6000);
+    });
+
+    const p2 = new Promise( (resolve, reject)=>{
+        setTimeout(() => {
+            resolve("promise resolve successfully");
+        }, 10000);
+    });
+
+
+    //await can be used inside an async function
+    async function handleP() {
+        //JS Engine was wating for promise to resolved
+        console.log("hello World");
+
+        const val = await p;
+        console.log("before value");
+        console.log(val);
+
+        const val3 = await p3;
+        console.log("this is p3"); 
+        console.log(val3);
+
+        const val2 = await p2;
+        console.log("after value"); 
+        console.log(val2);
+          
+    }
+
+//   handleP();
+
+
+  const api = 'https://dog.ceo/api/breeds/image/random'
+
+  async function apifet() {
+    const data = await fetch(api)
+    // const val = await data.json()
+    const val2 =  data.json()
+    console.log(data);
+    // console.log(val);
+    console.log(val2);
+    
+    
+  }
+
+  apifet()
+
+
+</script>
+</html>

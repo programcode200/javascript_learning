@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Click Index Logger</title>
+    <style>
+        .accordion-header {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="accordion-header">Header 1</div>
+    <div class="accordion-header">Header 2</div>
+    <div class="accordion-header">Header 3</div>
+
+    <script>
+        // Select all headers
+        const headers = document.querySelectorAll('.accordion-header');
+
+        // Loop through each header and add a click event listener
+        headers.forEach((header, index) => {
+            header.addEventListener('click', () => {
+                console.log('Clicked header index:', index);
+            });
+        });
+    </script>
+
+</body>
+</html>

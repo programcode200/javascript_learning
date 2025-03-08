@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: wheat;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>This is h1 Heading</h1>
+
+    <button id="start">start</button>
+    <button id="stop">Stop</button>
+
+</body>
+<script>
+
+//***************************************************************** SetTimeout *******************************************************************
+
+    // const hello = function () {
+    //     console.log("hello");
+    // }
+
+    // const changeT = function () {
+    //     document.querySelector('h1').
+    //         innerHTML = "Hello Js"
+    // }
+
+    // const stopText = setTimeout(changeT, 2000)
+
+    // document.querySelector('#stop').addEventListener('click', (e) => {
+    //     clearTimeout(stopText)
+    //     console.log("stopped");
+    // })
+
+
+//***************************************************************** SetIntervel *******************************************************************
+
+
+
+let stopT; // Declare stopT in the outer scope
+
+const time = function() {
+    console.log("hello js", Date.now());
+};
+
+document.querySelector('#start').addEventListener('click', () => {
+    // Set the interval to call the time function every second
+    stopT = setInterval(time, 1000);
+});
+
+document.querySelector('#stop').addEventListener('click', () => {
+    // Clear the interval to stop the repeated printing
+    clearInterval(stopT);
+});
+
+
+</script>
+
+</html>

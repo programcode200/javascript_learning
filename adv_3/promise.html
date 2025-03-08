@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+    }
+
+    .anime{
+      background-color: rgb(81, 65, 65);
+      width: 300px;
+      height: 300px;
+    }
+    .disney{
+      background-color: #6a2b2b;
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="anime"></div>
+  <div class="disney"></div>
+</body>
+
+
+<script>
+  //promise has three state
+  //pending, fulfilled, rejected
+
+  //Do an async task
+  //DB calls, network, cryptography
+
+  //creating promise
+
+  const promiseOne = new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      console.log("promise is called");
+      resolve();
+    }, 1000);
+  });
+
+  promiseOne.then(function () {
+    console.log("promise is completed");
+  });
+
+  //2nd way
+
+  new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      console.log("promise is execute");
+      resolve();
+    }, 1000);
+  }).then(function () {
+    console.log("promise is complete");
+  });
+
+  //*************************************************************************************************************************
+
+  const promiseTwo = new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      resolve({ username: "virat", password: "123" });
+    }, 1000);
+  });
+
+  promiseTwo.then((user) => {
+    console.log(user);
+  });
+
+  //*************************************************************************************************************************
+
+  const promiseFour = new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      let error = false;
+      if (!error) {
+        resolve({ username: "rohit", password: "000" });
+      } else {
+        reject("ERROR: Data not found");
+      }
+    }, 1000);
+  });
+
+  promiseFour.then(function (user) {
+    console.log(user);
+    return user.username;
+  })
+    .then(function (name) {
+      console.log(name);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .finally(() => console.log("The promise completed"));
+
+
+
+  //*************************************************************************************************************************
+
+  //promise handled by async and await
+
+  const promiseFive = new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      let error = false;
+      if (!error) {
+        resolve({ username: "rohan", password: "10100" });
+      } else {
+        reject("ERROR: 404 not found");
+      }
+    }, 1000);
+  });
+
+
+
+  async function consumePFive() {
+    //   const responese = await promiseFive
+    //   console.log(responese);
+
+    //   if (resolve) then async is handle and (reject) then give error can't handled
+    try {
+      const responese = await promiseFive;
+      console.log(responese);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  consumePFive()
+
+
+  //*************************************************************************************************************************************************************************
+
+  const anime = document.querySelector('.anime')
+ 
+
+
+  const url = 'https://api.jikan.moe/v4/anime'
+
+  async function promise() {
+    const data = await fetch(url);
+    const jsonvalue = await data.json()
+
+
+    console.log(jsonvalue);
+    // console.log(val);
+    // const firstAnime = jsonvalue.data[0]; 
+    // const imageUrl = firstAnime.images.jpg.image_url;
+
+    // const imageUrl = (await (await fetch(url)).json()).data[0].images.jpg.image_url;
+
+    const animeList = jsonvalue.data[0];
+    console.log(animeList);
+
+
+    // const imagesHtml =
+    //   animeList.map((anime) => {
+    //     return `<img src="${anime.images.jpg.image_url}" alt="${anime.title}" />`;
+    //   });
+
+    // // Update the DOM with the image
+    // // anime.innerHTML = `<img src="${imageUrl}" alt="Anime Image" />`;
+    // document.querySelector('.anime').innerHTML = imagesHtml
+
+  }
+  promise();
+
+
+
+  const apiUrl = 'https://api.disneyapi.dev/character'
+
+  fetch(apiUrl).then((res)=>{
+    console.log(res.blob());
+    
+  })
+  // .then((res)=>{
+  //   console.log("qqqqqqqqqqq",res.data[1].imageUrl);
+  //   if (data.data && Array.isArray(data.data)) {
+  //     console.log(data.data[1]);  // Log the second item in the array
+  //   } else {
+  //     console.error('Expected an array in data.data but received:', data.data);
+  //   }
+  //   if (res && res.images && res.imageUrl) {
+  //     const imageUrl = res.imageUrl;
+  //     console.log('Image URL:', imageUrl);
+
+  //     // Display the image on the page
+  //     document.querySelector('.anime').innerHTML = `<img src="${imageUrl}" alt="${firstAnime.title}" />`;
+  //   } else {
+  //     console.error('Expected properties (images, jpg) not found in the response');
+  //   }
+
+  //   const img =  res.data[1].imageUrl
+  //   document.querySelector('.anime').innerHTML =  `<img src="${img}" alt="nice" />`
+  //   const a = `hello js ${toString(res.data[1])}`
+  //   console.log(a);
+
+  //   const b = `hello js ${JSON.stringify(res.data[1]),null,2}`;
+  //   console.log(b); 
+  // })
+    
+function click(){
+  document.querySelector('.disney').innerHTML = `<h1>hello</h1>`
+}
+
+  anime.addEventListener('click',click)
+
+
+
+</script>
+
+</html>

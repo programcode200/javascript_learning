@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>hey</div>
+
+    <script>
+        const myPromise = new Promise((resolve, reject) => {
+            let condition = true
+
+            setTimeout(() => {
+                if (condition) {
+                    resolve("The promise is resolve 1")
+                }
+                else {
+                    reject("The operation is failed")
+                }
+            }, 2000)
+
+        })
+           
+        console.log("promise",myPromise);
+        // console.log(myPromise);
+
+
+        myPromise.then((res) => {
+            console.log(res);
+        }).catch((error) => {
+            console.error(error);
+        });
+        
+    </script>
+</body>
+
+</html>

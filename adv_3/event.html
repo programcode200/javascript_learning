@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: #212121;
+            color: wheat;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+
+        a {
+            color: white;
+        }
+
+
+        /* body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e0f7fa;
+        }
+
+        .fish {
+            width: 200px;
+            cursor: pointer;
+        }
+
+        .circle {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(74, 107, 132);
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(2);
+            }
+        } */
+    </style>
+</head>
+
+<body>
+
+    <h2>Images</h2>
+    <div>
+        <ul id="images">
+
+            <li><img id="bridge" src="\img\bridge.jpg" alt="bridge"></li>
+            <li><img id="mango" src="\img\mango.jpg" alt=""></li>
+            <li><img id="fish" src="\img\fish.jpg" alt=""></li>
+            <li><img id="mountain" src="\img\mountain.jpg" alt=""></li>
+            <li><img id="travel" src="\img\travel.jpg" alt=""></li>
+
+            <li><a href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+
+<script>
+
+
+    //circle click
+
+    //     document.getElementById('fish').addEventListener('click', function(event) {
+    //     // Get the position where the user clicked
+    //     const x = event.clientX;
+    //     const y = event.clientY;
+
+    //     // Create a new circle element
+    //     const circle = document.createElement('div');
+    //     circle.className = 'circle';
+    //     circle.style.left = `${x}px`;
+    //     circle.style.top = `${y}px`;
+
+    //     // Append the circle to the body
+    //     document.body.appendChild(circle);
+
+    //     // Remove the circle after animation
+    //     setTimeout(() => {
+    //         circle.remove();
+    //     }, 700);
+    // });
+
+
+
+
+
+
+
+
+
+    //important event
+
+    //     document.querySelector('#images').addEventListener('click', (e) => {
+    //         console.log("",e);
+    //         console.log("type",e.type);
+    //         console.log("time",e.timeStamp);
+    //         console.log("prevent default",e.defaultPrevented);
+    //         console.log("target",e.target);
+    //         console.log("element",e.toElement);
+    //         console.log("src",e.srcElement);
+    //         console.log("cuurtarget",e.currentTarget);
+    //         console.log("X",e.clientX);
+    //         console.log("Y",e.clientY);
+    //         console.log("sreenX",e.screenX);
+    //         console.log("screenY",e.screenY);
+    //         console.log("alt",e.altkey);
+    //         console.log("ctrl",e.ctrlkey);
+    //         console.log("shift",e.shiftkey);
+    //         console.log("keycode",e.keycode);
+    //         console.log("code",e.code);
+    // })
+
+
+
+
+    //keyboard events
+
+    //     document.addEventListener('keydown', function(e) {
+    //     console.log("Key:", e.key);           // e.g., "a"
+    //     console.log("Code:", e.code);         // e.g., "KeyA"
+    //     console.log("KeyCode:", e.keyCode);   // e.g., 65 (deprecated)
+    //     console.log("Alt pressed?", e.altKey);   // true or false
+    //     console.log("Ctrl pressed?", e.ctrlKey); // true or false
+    //     console.log("Shift pressed?", e.shiftKey); // true or false
+    //     console.log("Meta pressed?", e.metaKey); // true or false
+    //     console.log("Is repeating?", e.repeat); // true or false
+    // });
+
+
+
+
+
+
+    //mouse events
+
+    // document.addEventListener('mouseover', function(e) {
+    //     console.log("Mouse over element:", e.toElement);
+    // });
+    // document.addEventListener('mouseout', function(e) {
+    //     console.log("Mouse out element:", e.toElement);
+    // });
+    // document.addEventListener('mouseover', function(e) {
+    //     console.log("Mouse entered element:", e.relatedTarget);
+    // });
+    // document.addEventListener('mouseout', function(e) {
+    //     console.log("Mouse left element:", e.relatedTarget);
+    // });
+
+
+
+    //Event propagation default prevent (true and false)
+
+    // false : event bubbling
+    //bubble goes bottom to top >>>> fish then inside ul >>>>> inside to outside
+
+
+
+    // document.querySelector('#images').addEventListener('click', (e) => {
+    //         console.log("inside the ul");
+    // }, false)
+
+    // document.querySelector('#fish').addEventListener('click', (e) => {
+    //         console.log("fish clicked");
+    //         e.stopPropagation()
+    // }, false)
+
+    // document.querySelector('#google').addEventListener('click',(e)=>{
+    //     e.preventDefault()
+    // },false)
+
+
+
+    const image = document.querySelector('#images').addEventListener('click', (e) => {
+        console.log(e.target.tagName);
+        console.log(e.target.parentNode);
+
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            const removeIt = e.target.parentNode;
+            removeIt.remove();
+        }
+        // removeIt.parentNode.removeChild(removeIt)
+
+    }, false)
+
+</script>
+
+</html>

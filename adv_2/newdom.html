@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <ul class="languages">
+        <li>Javascript</li>
+        <li>Python</li>
+
+    </ul>
+
+
+
+
+
+    <script>
+
+        function addlang(langname){
+            const li = document.createElement("li")
+            li.innerHTML = `${langname}`
+
+            document.querySelector(".languages").appendChild(li)
+        }
+        addlang("Java")
+        addlang("TypeScript")
+
+
+        function optiaddfn (langname){
+            const li = document.createElement("li")
+
+            // const newel = document.createTextNode(langname)
+            // li.appendChild(newel)
+            li.appendChild(document.createTextNode(langname))
+
+            document.querySelector('.languages').appendChild(li)
+        }
+        optiaddfn("c++")
+
+
+        //edit
+
+        const replel = document.querySelector('li:nth-child(3)')
+        console.log(replel);
+        
+        const newli = document.createElement('li')
+        newli.textContent = "Golang"
+        replel.replaceWith(newli)
+
+        //edit 2way
+
+        const firstel = document.querySelector('li:first-child')
+        firstel.outerHTML = "<li>Dart</li>"
+
+        //remove
+
+        const removeel = document.querySelector("li:last-child")
+        removeel.remove()
+
+
+    </script>
+</body>
+
+</html>
